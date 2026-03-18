@@ -18,9 +18,10 @@ Imports from:
 """
 
 from collections import defaultdict, Counter, deque
-from hero_rpg.enums   import ItemType
-from hero_rpg.models  import Weapon, Item
-from hero_rpg.bag     import Bag
+# from hero_rpg.enums   import ItemType
+# from hero_rpg.models  import Weapon, Item
+# from hero_rpg.bag     import Bag
+from hero_rpg import ItemType, Weapon, Item, Bag
 
 
 class Hero:
