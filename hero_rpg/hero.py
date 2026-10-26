@@ -135,7 +135,9 @@ class Hero:
         Record defeating an enemy.
         Counter accumulates each enemy type; no manual initialization needed.
         """
-        pass
+        self.kill_counter[enemy_type] += 1
+        count = self.kill_counter[enemy_type]
+        self.combat_log.append(f"{self.name} defeated a {enemy_type}! (Total {enemy_type} kills: {count})")
 
     def total_damage_potential(self) -> int:
         """Sum damage of all currently equipped weapons."""
@@ -146,7 +148,7 @@ class Hero:
         Return the top N most-killed enemy types.
         Counter.most_common() returns them in descending order of count.
         """
-        pass
+        return self.kill_counter.most_common(n)
 
     # ── Stats ─────────────────────────────────────────────────────────────────
 
