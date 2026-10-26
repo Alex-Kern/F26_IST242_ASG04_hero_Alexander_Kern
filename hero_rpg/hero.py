@@ -159,4 +159,10 @@ class Hero:
         Returns:
             True if stat exists and was upgraded; False if key not found.
         """
-        pass
+        if stat in self.stats:
+            self.stats[stat] += amount
+            return True
+        return False
+    
+    def __str__(self) -> str:
+        return f"Hero: {self.name} the {self.hero_class} | HP: {self.health}/{self.max_health}"
