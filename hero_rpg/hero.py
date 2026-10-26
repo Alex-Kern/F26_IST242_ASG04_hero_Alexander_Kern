@@ -59,7 +59,10 @@ class Hero:
         Returns:
             Actual HP lost (may be less than `amount` near death).
         """
-        pass
+        actual_damage = min(self.health, amount)
+        self.health -= actual_damage
+        self.combat_log.append(f"{self.name} took {actual_damage} damage. HP: {self.health}/{self.max_health}")
+        return actual_damage
 
     def heal(self, amount: int) -> int:
         """
