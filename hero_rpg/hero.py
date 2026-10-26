@@ -18,10 +18,9 @@ Imports from:
 """
 
 from collections import defaultdict, Counter, deque
-# from hero_rpg.enums   import ItemType
-# from hero_rpg.models  import Weapon, Item
-# from hero_rpg.bag     import Bag
-from hero_rpg import ItemType, Weapon, Item, Bag
+from hero_rpg.enums import ItemType
+from hero_rpg.models import Weapon, Item
+from hero_rpg.bag import Bag
 
 
 class Hero:
@@ -31,7 +30,25 @@ class Hero:
     """
 
     def __init__(self, name: str, hero_class: str, max_health: int = 100) -> None:
-        pass
+        self.name: str = name
+        self.hero_class: str = hero_class
+        self.max_health: int = max_health
+        self.health: int = max_health
+
+        self.inventory: Bag[Item] = Bag(capacity=20)
+        self.equipped_weapons: Bag[Weapon] = Bag(capacity=3)
+        self.skills: set[str] = set()
+
+        self.stats: dict[str, int] = {
+            "strength": 10,
+            "dexterity": 10,
+            "intelligence": 10,
+            "defense": 5,
+        }
+
+        self.kill_counter: Counter[str] = Counter()
+        self._item_registry: defaultdict[str, list[Item]] = defaultdict(list)
+        self.combat_log: deque[str] = deque(maxlen=10)
 
     # ── Health ────────────────────────────────────────────────────────────────
 
