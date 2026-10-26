@@ -25,7 +25,8 @@ class Bag(Generic[T]):
     """
 
     def __init__(self, capacity: int) -> None:
-        pass
+        self.capacity: int = capacity
+        self._items: list[T] = []
 
     def add(self, item: T) -> bool:
         """
@@ -57,4 +58,4 @@ class Bag(Generic[T]):
 
     def __len__(self) -> int:
         """Support len(bag)."""
-        pass
+        return len(self._items)
