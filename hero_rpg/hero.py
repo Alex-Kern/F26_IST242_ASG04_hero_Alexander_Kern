@@ -116,14 +116,17 @@ class Hero:
         Returns:
             True if added; False if inventory is full.
         """
-        pass
+        success = self.inventory.add(item)
+        if success:
+            self._item_registry[item.item_type.value].append(item)
+        return success
 
     def items_by_type(self) -> dict[str, list[Item]]:
         """
         Return items grouped by ItemType name as a plain dict copy.
         Callers cannot mutate the internal defaultdict directly.
         """
-        pass
+        return {k: v.copy() for k, v in self._item_registry.items()}
 
     # ── Combat & Kill Tracking ────────────────────────────────────────────────
 
